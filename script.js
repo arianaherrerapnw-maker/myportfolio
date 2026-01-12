@@ -16,3 +16,11 @@ document.querySelectorAll(".nav-list a").forEach((a) => {
     toggleBtn.setAttribute("aria-expanded", "false");
   });
 });
+
+// Always start at the top on page load
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    window.scrollTo(0, 0);
+    history.replaceState(null, "", window.location.pathname);
+  }
+});
