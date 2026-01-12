@@ -309,3 +309,14 @@ h3{
   .nav-list.open{ display:flex; }
   .nav-list a{ padding: 10px 12px; }
 }
+
+/* Fix anchor links being hidden under the sticky header */
+:root { scroll-padding-top: 90px; }
+section { scroll-margin-top: 90px; }
+
+:root { --header-offset: 90px; scroll-padding-top: var(--header-offset); }
+section { scroll-margin-top: var(--header-offset); }
+
+@media (max-width: 720px){
+  :root { --header-offset: 110px; }
+}
