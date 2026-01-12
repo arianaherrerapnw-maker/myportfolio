@@ -36,13 +36,14 @@ a:hover{ text-decoration: underline; }
   backdrop-filter: blur(14px);
   background: rgba(11,13,18,0.65);
   border-bottom: 1px solid var(--border);
+  padding-bottom: 6px; /* ✅ pushes the divider line down */
 }
 
 .site-header .container{ display:flex; align-items:center; justify-content:space-between; }
 
 .logo{
   display:flex; align-items:center; gap:10px;
-  padding: 14px 0;
+  padding: 14px 0 14px 6px; /* ✅ adds left space so dot isn't against edge */
   font-weight: 700;
   letter-spacing: 0.2px;
 }
@@ -50,6 +51,7 @@ a:hover{ text-decoration: underline; }
   width: 10px; height: 10px; border-radius: 50%;
   background: linear-gradient(135deg, #7cdbff, #c38bff);
   box-shadow: 0 0 0 6px rgba(124,219,255,0.08);
+  margin-left: 2px; /* ✅ tiny nudge right */
 }
 
 .nav{ position: relative; }
@@ -70,6 +72,9 @@ a:hover{ text-decoration: underline; }
 }
 .nav-list a{ padding: 10px 10px; border-radius: 12px; }
 .nav-list a:hover{ background: rgba(255,255,255,0.06); text-decoration:none; }
+
+/* Optional tiny breathing room for the Contact pill */
+.nav-list .btn{ margin-bottom: 2px; }
 
 .section{ padding: 64px 0; }
 .section-alt{
@@ -311,9 +316,6 @@ h3{
 }
 
 /* Fix anchor links being hidden under the sticky header */
-:root { scroll-padding-top: 90px; }
-section { scroll-margin-top: 90px; }
-
 :root { --header-offset: 90px; scroll-padding-top: var(--header-offset); }
 section { scroll-margin-top: var(--header-offset); }
 
