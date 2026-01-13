@@ -56,3 +56,4 @@ if (themeBtn) {
     setTheme(isLight ? "dark" : "light");
   });
 }
+<script src="script.js"></script>
