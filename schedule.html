@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule a Conversation | Ariana Herrera</title>
+    <meta name="description" content="Schedule a conversation with Ariana Herrera." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="logo" href="./index.html#top" aria-label="Back to homepage">
+          <span class="logo-dot"></span> Ariana Herrera
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#projects">Projects</a></li>
+            <li><a href="./index.html#resume">Resume</a></li>
+            <li><a href="./index.html#contact" class="btn btn-small">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="section">
+        <div class="container">
+          <div class="schedule-head">
+            <h1 class="schedule-title">Schedule a Conversation</h1>
+            <p class="muted schedule-subtitle">
+              Select a time slot that works for you. You’ll receive a confirmation and calendar invite after booking.
+            </p>
+          </div>
+
+          <div class="schedule-card">
+            <!-- Calendly Inline Embed -->
+            <div
+              class="calendly-inline-widget"
+              data-url="YOUR-CALENDLY-LINK-HERE"
+            ></div>
+          </div>
+
+          <p class="small muted schedule-alt">
+            Prefer email instead? <a href="mailto:aherre3@uw.edu">aherre3@uw.edu</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p>© <span id="year"></span> Ariana Herrera</p>
+        <a href="./index.html#top">Back to home ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Calendly Widget Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </body>
+</html>
