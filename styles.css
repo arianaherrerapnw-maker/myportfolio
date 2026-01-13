@@ -347,19 +347,15 @@ h3{ font-size:18px; }
   gap:12px;
 }
 
-.theme-toggle{
-  border:1px solid var(--border);
-  background: rgba(255,255,255,0.08);
-  color: var(--text);
-  border-radius:12px;
-  padding:6px 10px;
-  cursor:pointer;
-  font-size:14px;
+.back-to-top{
+  font-weight: 600;
+  color: var(--muted);
 }
 
-.theme-toggle:hover{
-  background: rgba(255,255,255,0.14);
+.back-to-top:hover{
+  text-decoration: underline;
 }
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 980px){
