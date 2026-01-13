@@ -16,6 +16,10 @@
         </a>
 
         <nav class="nav" aria-label="Primary">
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            ☰
+          </button>
+
           <ul class="nav-list">
             <li><a href="./index.html#about">About</a></li>
             <li><a href="./index.html#projects">Projects</a></li>
@@ -37,10 +41,10 @@
           </div>
 
           <div class="schedule-card">
-            <!-- Calendly Inline Embed -->
+            <!-- ✅ Calendly Inline Embed -->
             <div
               class="calendly-inline-widget"
-              data-url="YOUR-CALENDLY-LINK-HERE"
+              data-url="https://calendly.com/ariana-herrera-pnw/30min"
             ></div>
           </div>
 
@@ -54,15 +58,14 @@
     <footer class="site-footer">
       <div class="container footer-row">
         <p>© <span id="year"></span> Ariana Herrera</p>
-        <a href="./index.html#top">Back to home ↑</a>
+        <a href="./index.html#top" class="back-to-top">Back to home ↑</a>
       </div>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <!-- ✅ Use your shared JS so it works on both pages -->
+    <script src="script.js"></script>
 
-    <!-- Calendly Widget Script -->
+    <!-- ✅ Calendly Widget Script (required) -->
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </body>
 </html>
