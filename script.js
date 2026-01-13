@@ -1,53 +1,58 @@
-// script.js
+// ================= YEAR =================
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ===== Mobile nav toggle =====
-  const toggle = document.querySelector(".nav-toggle");
-  const navList = document.querySelector(".nav-list");
+// ================= MOBILE NAV =================
+const navToggle = document.querySelector(".nav-toggle");
+const navList = document.querySelector(".nav-list");
 
-  if (toggle && navList) {
-    const closeMenu = () => {
+if (navToggle && navList) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navList.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Close menu when a link is clicked (mobile)
+  navList.addEventListener("click", (e) => {
+    const clickedLink = e.target.closest("a");
+    if (!clickedLink) return;
+
+    if (navList.classList.contains("open")) {
       navList.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    };
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
 
-    const openMenu = () => {
-      navList.classList.add("open");
-      toggle.setAttribute("aria-expanded", "true");
-    };
+// ================= THEME TOGGLE =================
+// Uses: :root[data-theme="light"] in CSS
+const themeBtn = document.getElementById("themeToggle");
+const root = document.documentElement;
 
-    toggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isOpen = navList.classList.contains("open");
-      isOpen ? closeMenu() : openMenu();
-    });
-
-    // Close menu when clicking a nav link
-    navList.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        closeMenu();
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      const clickedInsideNav = navList.contains(e.target) || toggle.contains(e.target);
-      if (!clickedInsideNav) closeMenu();
-    });
-
-    // Close menu with Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-
-    // Close menu if window is resized to desktop width
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 720) closeMenu();
-    });
+function setTheme(theme) {
+  if (theme === "light") {
+    root.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+    if (themeBtn) themeBtn.textContent = "☀️ / 🌙";
+  } else {
+    root.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+    if (themeBtn) themeBtn.textContent = "🌙 / ☀️";
   }
+}
 
-  // ===== Footer year (optional) =====
-  // If you already set the year inline in HTML, you can delete this part.
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-});
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+  setTheme("light");
+} else {
+  setTheme("dark");
+}
+
+// Toggle on click
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    const isLight = root.getAttribute("data-theme") === "light";
+    setTheme(isLight ? "dark" : "light");
+  });
+}
