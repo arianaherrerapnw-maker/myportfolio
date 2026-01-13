@@ -46,6 +46,14 @@ body{
   color: var(--text);
 }
 
+:root[data-theme="light"] body{
+  /* lighter background feel */
+  background:
+    radial-gradient(1200px 700px at 20% 0%, rgba(26,39,82,0.16) 0%, rgba(26,39,82,0) 55%),
+    radial-gradient(900px 600px at 90% 10%, rgba(58,30,86,0.12) 0%, rgba(58,30,86,0) 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+
 a{ color: inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; }
 
@@ -64,6 +72,10 @@ a:hover{ text-decoration:underline; }
   border-bottom: 1px solid var(--border);
 }
 
+:root[data-theme="light"] .site-header{
+  background: rgba(247,248,251,0.72);
+}
+
 .header-row{
   display:flex;
   align-items:center;
@@ -74,7 +86,7 @@ a:hover{ text-decoration:underline; }
   display:flex;
   align-items:center;
   gap:10px;
-  padding: 14px 0 14px 10px; /* pushes dot away from the corner */
+  padding: 14px 0 14px 10px; /* dot not touching the corner */
   font-weight: 700;
   letter-spacing: 0.2px;
 }
@@ -100,6 +112,10 @@ a:hover{ text-decoration:underline; }
   cursor: pointer;
 }
 
+:root[data-theme="light"] .nav-toggle{
+  background: rgba(0,0,0,0.04);
+}
+
 .nav-list{
   display:flex;
   gap: 18px;
@@ -120,7 +136,11 @@ a:hover{ text-decoration:underline; }
   text-decoration:none;
 }
 
-/* Make the Contact pill sit a little higher off the bottom border */
+:root[data-theme="light"] .nav-list a:hover{
+  background: rgba(0,0,0,0.04);
+}
+
+/* Keep the Contact pill away from the bottom border line */
 .nav-list .btn-small{
   margin-bottom: 2px;
 }
@@ -132,6 +152,10 @@ a:hover{ text-decoration:underline; }
   background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+}
+
+:root[data-theme="light"] .section-alt{
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
 }
 
 .hero{ padding-top: 52px; }
@@ -207,6 +231,12 @@ h3{
   box-shadow: var(--shadow);
   text-decoration:none;
   font-weight: 600;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+:root[data-theme="light"] .btn{
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
 }
 
 .btn:hover{
@@ -272,6 +302,10 @@ h3{
   border: 1px solid rgba(255,255,255,0.14);
 }
 
+:root[data-theme="light"] .avatar{
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
 .hero-name{ margin:0; font-weight: 800; }
 .hero-sub{ margin: 3px 0 0; color: var(--muted); }
 
@@ -291,6 +325,12 @@ h3{
   color: var(--text);
 }
 
+:root[data-theme="light"] .pill{
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
+  color: var(--text);
+}
+
 .hero-card-footer .small{ margin: 0; }
 
 /* ================= STATS ================= */
@@ -306,6 +346,10 @@ h3{
   background: rgba(255,255,255,0.05);
   border-radius: var(--radius);
   padding: 14px;
+}
+
+:root[data-theme="light"] .stat{
+  background: rgba(0,0,0,0.03);
 }
 
 .stat-number{
@@ -333,6 +377,10 @@ h3{
   padding: 16px;
 }
 
+:root[data-theme="light"] .card{
+  background: rgba(0,0,0,0.03);
+}
+
 .card ul{
   margin: 0;
   padding-left: 18px;
@@ -342,13 +390,6 @@ h3{
 .card li{
   margin: 8px 0;
   line-height: 1.5;
-}
-
-.section-head{
-  display:flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 14px;
 }
 
 .project-grid{
@@ -363,9 +404,10 @@ h3{
   background: rgba(255,255,255,0.05);
   border-radius: var(--radius);
   padding: 16px;
-  display:flex;
-  flex-direction: column;
-  gap: 10px;
+}
+
+:root[data-theme="light"] .project{
+  background: rgba(0,0,0,0.03);
 }
 
 .project p{
@@ -382,6 +424,10 @@ h3{
   padding: 18px;
 }
 
+:root[data-theme="light"] .resume-box{
+  background: rgba(0,0,0,0.03);
+}
+
 /* ================= CONTACT ================= */
 .contact-grid{
   margin-top: 18px;
@@ -390,44 +436,15 @@ h3{
   gap: 14px;
 }
 
-.link-list{
-  margin: 10px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-
-.link-list li{ margin: 8px 0; }
-
-/* ================= SCHEDULE PAGE ================= */
-.schedule-head{ margin-bottom: 16px; }
-
-.schedule-title{
-  font-size: clamp(28px, 3.2vw, 40px);
-  margin: 0 0 10px;
-}
-
-.schedule-subtitle{ margin: 0; }
-
-.schedule-card{
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.calendly-inline-widget{
-  min-width: 320px;
-  height: 760px;
-}
-
-.schedule-alt{ margin-top: 12px; }
-
 /* ================= FOOTER ================= */
 .site-footer{
   border-top: 1px solid var(--border);
   padding: 26px 0;
   background: rgba(0,0,0,0.22);
+}
+
+:root[data-theme="light"] .site-footer{
+  background: rgba(0,0,0,0.04);
 }
 
 .footer-row{
@@ -436,12 +453,6 @@ h3{
   justify-content: space-between;
   gap: 12px;
   color: var(--muted);
-}
-
-.footer-actions{
-  display:flex;
-  align-items:center;
-  gap: 12px;
 }
 
 .theme-toggle{
@@ -454,8 +465,8 @@ h3{
   font-size: 14px;
 }
 
-.theme-toggle:hover{
-  background: rgba(255,255,255,0.14);
+:root[data-theme="light"] .theme-toggle{
+  background: rgba(0,0,0,0.04);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -488,7 +499,10 @@ h3{
     display:none;
   }
 
-  .nav-list.open{ display:flex; }
+  :root[data-theme="light"] .nav-list{
+    background: rgba(247,248,251,0.98);
+  }
 
+  .nav-list.open{ display:flex; }
   .nav-list a{ padding: 10px 12px; }
 }
